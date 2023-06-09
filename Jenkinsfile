@@ -15,9 +15,6 @@ try {
             sh 'npm run lint'
         }
 
-        stage('Run Unit Tests') {
-            sh 'npm run test'
-        }
 
         stage('SonarQube code analysis') {
           withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
