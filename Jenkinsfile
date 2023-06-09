@@ -7,8 +7,6 @@ try {
             env.SHORT_COMMIT = "${scmVars.GIT_COMMIT[0..7]}"
             env.GIT_REPO_NAME = scmVars.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
         }
-        stage
-
         stage('Install dependencies') {
             sh 'npm install'
         }
@@ -50,8 +48,4 @@ try {
   /* Success or failure, always run post build steps */
 // send email
 // publish test results etc etc
-}
-def version() {
-    pom = readMavenPom file: 'pom.xml'
-    return pom.version
 }
