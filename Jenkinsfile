@@ -18,6 +18,7 @@ try {
 
         stage('SonarQube code analysis') {
           withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
+              sh 'export PATH="/opt/sonar-scanner-4.7.0.2747-linux/bin:$PATH"'
               sh 'sonar-scanner -Dsonar.projectKey=devsecops-kahawa-frontend -Dsonar.organization=kahawa'
           } 
         }
